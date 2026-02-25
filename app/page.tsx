@@ -9,10 +9,15 @@ export default function Home() {
   const [feedbackList, setFeedbackList] = useState<FeedbackRow[]>([])
 
   useEffect(() => {
-    // Latest feedbacks first (newest at front)
-    supabase.from('feedback').select('id, name, stars, feedback_text, created_at').order('created_at', { ascending: false }).limit(20)
-      .then(({ data }) => setFeedbackList(data ?? []))
-      .catch(() => setFeedbackList([]))
+    async function load() {
+      try {
+        const { data } = await supabase.from('feedback').select('id, name, stars, feedback_text, created_at').order('created_at', { ascending: false }).limit(20)
+        setFeedbackList(data ?? [])
+      } catch {
+        setFeedbackList([])
+      }
+    }
+    load()
   }, [])
 
   return (
