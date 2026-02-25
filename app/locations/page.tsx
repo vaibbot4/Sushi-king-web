@@ -50,7 +50,7 @@ export default function Locations() {
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="h-64 overflow-hidden">
                 <img
-                  src="/images/hodge-hall.jpeg"
+                  src="/images/Hodge-hall.jpeg"
                   alt="1309 E 10th St - Sushi King"
                   className="w-full h-full object-cover"
                 />
